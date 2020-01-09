@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mr.zwt.easybuy.mapper.EmployeeEntityMapper" >
+  <resultMap id="BaseResultMap" type="com.mr.zwt.easybuy.entity.EmployeeEntity" >
+    <id column="emp_id" property="empId" jdbcType="VARCHAR" />
+    <result column="emp_name" property="empName" jdbcType="VARCHAR" />
+    <result column="emp_code" property="empCode" jdbcType="VARCHAR" />
+    <result column="emp_pass" property="empPass" jdbcType="VARCHAR" />
+    <result column="emp_phone" property="empPhone" jdbcType="VARCHAR" />
+    <result column="emp_img" property="empImg" jdbcType="VARCHAR" />
+    <result column="emp_status" property="empStatus" jdbcType="INTEGER" />
+    <result column="emp_date" property="empDate" jdbcType="DATE" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    emp_id, emp_name, emp_code, emp_pass, emp_phone, emp_img, emp_status, emp_date
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_employee
+    where emp_id = #{empId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from t_employee
+    where emp_id = #{empId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.mr.zwt.easybuy.entity.EmployeeEntity" >
+    insert into t_employee (emp_id, emp_name, emp_code, 
+      emp_pass, emp_phone, emp_img, 
+      emp_status, emp_date)
+    values (#{empId,jdbcType=VARCHAR}, #{empName,jdbcType=VARCHAR}, #{empCode,jdbcType=VARCHAR}, 
+      #{empPass,jdbcType=VARCHAR}, #{empPhone,jdbcType=VARCHAR}, #{empImg,jdbcType=VARCHAR}, 
+      #{empStatus,jdbcType=INTEGER}, #{empDate,jdbcType=DATE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.mr.zwt.easybuy.entity.EmployeeEntity" >
+    insert into t_employee
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="empId != null" >
+        emp_id,
+      </if>
+      <if test="empName != null" >
+        emp_name,
+      </if>
+      <if test="empCode != null" >
+        emp_code,
+      </if>
+      <if test="empPass != null" >
+        emp_pass,
+      </if>
+      <if test="empPhone != null" >
+        emp_phone,
+      </if>
+      <if test="empImg != null" >
+        emp_img,
+      </if>
+      <if test="empStatus != null" >
+        emp_status,
+      </if>
+      <if test="empDate != null" >
+        emp_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="empId != null" >
+        #{empId,jdbcType=VARCHAR},
+      </if>
+      <if test="empName != null" >
+        #{empName,jdbcType=VARCHAR},
+      </if>
+      <if test="empCode != null" >
+        #{empCode,jdbcType=VARCHAR},
+      </if>
+      <if test="empPass != null" >
+        #{empPass,jdbcType=VARCHAR},
+      </if>
+      <if test="empPhone != null" >
+        #{empPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="empImg != null" >
+        #{empImg,jdbcType=VARCHAR},
+      </if>
+      <if test="empStatus != null" >
+        #{empStatus,jdbcType=INTEGER},
+      </if>
+      <if test="empDate != null" >
+        #{empDate,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mr.zwt.easybuy.entity.EmployeeEntity" >
+    update t_employee
+    <set >
+      <if test="empName != null" >
+        emp_name = #{empName,jdbcType=VARCHAR},
+      </if>
+      <if test="empCode != null" >
+        emp_code = #{empCode,jdbcType=VARCHAR},
+      </if>
+      <if test="empPass != null" >
+        emp_pass = #{empPass,jdbcType=VARCHAR},
+      </if>
+      <if test="empPhone != null" >
+        emp_phone = #{empPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="empImg != null" >
+        emp_img = #{empImg,jdbcType=VARCHAR},
+      </if>
+      <if test="empStatus != null" >
+        emp_status = #{empStatus,jdbcType=INTEGER},
+      </if>
+      <if test="empDate != null" >
+        emp_date = #{empDate,jdbcType=DATE},
+      </if>
+    </set>
+    where emp_id = #{empId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mr.zwt.easybuy.entity.EmployeeEntity" >
+    update t_employee
+    set emp_name = #{empName,jdbcType=VARCHAR},
+      emp_code = #{empCode,jdbcType=VARCHAR},
+      emp_pass = #{empPass,jdbcType=VARCHAR},
+      emp_phone = #{empPhone,jdbcType=VARCHAR},
+      emp_img = #{empImg,jdbcType=VARCHAR},
+      emp_status = #{empStatus,jdbcType=INTEGER},
+      emp_date = #{empDate,jdbcType=DATE}
+    where emp_id = #{empId,jdbcType=VARCHAR}
+  </update>
+</mapper>

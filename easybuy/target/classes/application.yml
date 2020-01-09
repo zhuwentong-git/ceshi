@@ -1,0 +1,148 @@
+server:
+  port: 8080
+# 打开监控模块端点1.0版本不需要此项配置
+mybatis:
+  #扫描哪个包下的mapper映射文件
+  mapper-locations: classpath:mapper/*.xml
+    # 实体类/vo所在的包-->mapper标签内默认不写resultType或resultMap会从当前包下自动找需要返回的类，使用mybatis代码生成器意义不大
+    # type-aliases-package: com.mr.syq.*.vo
+    # mapper文件的目录
+    # mybatis配置
+  #configuration:
+  # 日志输出 可以用此方式输出mybatis日志，但是不推荐，有很多与程序无关的日志存在
+  #log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+#日志设置
+logging:
+  level:
+    # 打印与我们程序相关的日志信息
+    com.mr.zwt: debug
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+spring:
+
+  mail:
+    host: smtp.qq.com
+    username: 1297017703@qq.com  #发送方的邮箱
+    password: dtasreyakmckihfj  # 设置密码，该处的密码是发送方QQ邮箱开启SMTP的授权码而非QQ密码
+
+  # springboot整合thymeleaf
+  thymeleaf:
+    # 配置前缀-->模板文件存储路径
+    prefix: classpath:/templates/
+    # 是否检查本地模板
+    check-template-location: true
+    # 配置模板文件后缀
+    suffix: .html
+    # 编码格式
+    encoding: UTF-8
+    servlet:
+      # 模板类型
+      content-type: text/html
+    #模板模式
+    mode: HTML5
+    # 是否启用缓存
+    cache: false
+  # 整合redis配置
+  redis:
+    # 数据库标识，可以配置多个redis使用不同的标识区分
+    database: 0
+    # redisIP地址
+    host: 127.0.0.1
+    # redis端口号
+    port: 6379
+    # redis密码
+    password: 123456
+    # redis连接池的配置
+    jedis:
+      pool:
+        #最大连接数据库连接数,设 0 为没有限制
+        max-active: 8
+        #最大等待连接中的数量,设 0 为没有限制
+        max-idle: 8
+        #最大建立连接等待时间。如果超过此时间将接到异常。设为-1表示无限制。
+        max-wait: -1ms
+        #最小等待连接中的数量,设 0 为没有限制
+        min-idle: 0
+  # 配置数据源
+  datasource:
+    # 数据源名称，任意
+    name: mysql
+    url: jdbc:mysql://localhost:3306/1906?ullNamePatternMatchesAll=true&serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf8
+    # 数据库连接用户
+    username: root
+    # 数据库连接密码
+    password: root
+     # 驱动
+    driver-class-name: com.mysql.jdbc.Driver
+
+    # 数据库连接池类型使用alibaba的数据库连接池
+#    type: com.alibaba.druid.pool.DruidDataSource
+    #boot2.0 是用hikari数据库连接池
+    type: com.zaxxer.hikari.HikariDataSource
+
+    hikari:
+      # 是否自动提交事务 默认
+      auto-commit: true
+      # 允许的最小连接数
+      minimum-idle: 5
+      # 连接池内最大连接数
+      maximum-pool-size: 10
+      # 验证连接的sql语句
+      connection-test-query: SELECT 1 FROM DUAL
+      # 连接超时时间 默认30000 毫秒 如果小于250毫秒，则被重置回30秒
+      connection-timeout: 30000
+      # 验证超时时间默认5000毫秒 如果小于250毫秒，则会被重置回5秒
+      validation-timeout: 5000
+      # 设置连接在连接池中的存活时间 如果不等于0且小于30秒则会被重置回30分钟,如果等于0的话表示连接无限存活
+      max-lifetime: 1800000
+    # 配置监控统计拦截的filters，去掉后监控界面sql无法统计，'wall'用于防火墙，此处是filter修改的地方
+#    filters:
+#      commons-log:
+#        connection-logger-name: stat,wall,log4j
+#    # 连接池内初始化连接数 在自己电脑上开发可以设置为1
+#    initialSize: 1
+#    # 最小连接数 在自己电脑上开发可以设置为1
+#    minIdle: 1
+#    # 最大连接数
+#    maxActive: 20
+#    # 数据库连接超时等待时间
+#    maxWait: 60000
+#    # 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+#    timeBetweenEvictionRunsMillis: 60000
+#    # 配置一个连接在池中最小生存的时间，单位是毫秒
+#    minEvictableIdleTimeMillis: 300000
+#    # 验证连接发送的sql语句
+#    validationQuery: SELECT 1 FROM DUAL
+#    # 测试闲置连接
+#    testWhileIdle: true
+#    # 测试正在使用连接
+#    testOnBorrow: false
+#    # 测试已经收回的连接
+#    testOnReturn: false
+#    # 打开PSCache
+#    poolPreparedStatements: true
+#    # 指定每个连接上PSCache的大小
+#    maxOpenPreparedStatements: 20
+#    # 通过connectProperties属性来打开mergeSql功能；慢SQL记录
+#    connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+#    # 使用全局的数据源监控 合并多个DruidDataSource的监控数据
+#    useGlobalDataSourceStat: true
+
+  # 热部署
+  devtools:
+    restart:
+      # 设置重启目录 java文件和页面文件
+      additional-paths: src/main/java,templates/**,static/**
+      # 设置修改不重启目录 js和css等静态资源文件-->后期有可能会改
+      exclude: public/**
+      # 是否重启项目
+      enabled: true
+
+
+

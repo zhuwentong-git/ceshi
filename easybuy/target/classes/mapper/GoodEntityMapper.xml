@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mr.zwt.easybuy.mapper.GoodEntityMapper" >
+  <resultMap id="BaseResultMap" type="com.mr.zwt.easybuy.entity.GoodEntity" >
+    <id column="good_id" property="goodId" jdbcType="VARCHAR" />
+    <result column="emp_id" property="empId" jdbcType="VARCHAR" />
+    <result column="type_id" property="typeId" jdbcType="VARCHAR" />
+    <result column="good_name" property="goodName" jdbcType="VARCHAR" />
+    <result column="good_price" property="goodPrice" jdbcType="DOUBLE" />
+    <result column="good_status" property="goodStatus" jdbcType="INTEGER" />
+    <result column="good_count" property="goodCount" jdbcType="INTEGER" />
+    <result column="good_create_date" property="goodCreateDate" jdbcType="DATE" />
+    <result column="good_type" property="goodType" jdbcType="INTEGER" />
+    <result column="good_img" property="goodImg" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    good_id, emp_id, type_id, good_name, good_price, good_status, good_count, good_create_date, 
+    good_type, good_img
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_good
+    where good_id = #{goodId,jdbcType=VARCHAR}
+  </select>
+  <select id="list" resultMap="BaseResultMap" parameterType="com.mr.zwt.easybuy.entity.GoodEntity" >
+    select
+    <include refid="Base_Column_List" />
+    from t_good
+    where 1=1
+    <if test="typeId != null and typeId !=''">
+        and type_id = #{typeId}
+    </if>
+  </select>
+  <select id="findPk" resultType="java.lang.String" parameterType="com.mr.zwt.easybuy.entity.GoodEntity" >
+    select
+    good_id
+    from t_good
+    where 1=1
+    <if test="typeId != null and typeId !=''">
+      and type_id = #{typeId}
+    </if>
+     <if test="goodId != null and goodId !=''">
+      and good_id = #{goodId}
+    </if>
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from t_good
+    where good_id = #{goodId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.mr.zwt.easybuy.entity.GoodEntity" >
+    insert into t_good (good_id, emp_id, type_id, 
+      good_name, good_price, good_status, 
+      good_count, good_create_date, good_type, 
+      good_img)
+    values (#{goodId,jdbcType=VARCHAR}, #{empId,jdbcType=VARCHAR}, #{typeId,jdbcType=VARCHAR}, 
+      #{goodName,jdbcType=VARCHAR}, #{goodPrice,jdbcType=DOUBLE}, #{goodStatus,jdbcType=INTEGER}, 
+      #{goodCount,jdbcType=INTEGER}, #{goodCreateDate,jdbcType=DATE}, #{goodType,jdbcType=INTEGER}, 
+      #{goodImg,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.mr.zwt.easybuy.entity.GoodEntity" >
+    insert into t_good
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="goodId != null" >
+        good_id,
+      </if>
+      <if test="empId != null" >
+        emp_id,
+      </if>
+      <if test="typeId != null" >
+        type_id,
+      </if>
+      <if test="goodName != null" >
+        good_name,
+      </if>
+      <if test="goodPrice != null" >
+        good_price,
+      </if>
+      <if test="goodStatus != null" >
+        good_status,
+      </if>
+      <if test="goodCount != null" >
+        good_count,
+      </if>
+      <if test="goodCreateDate != null" >
+        good_create_date,
+      </if>
+      <if test="goodType != null" >
+        good_type,
+      </if>
+      <if test="goodImg != null" >
+        good_img,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="goodId != null" >
+        #{goodId,jdbcType=VARCHAR},
+      </if>
+      <if test="empId != null" >
+        #{empId,jdbcType=VARCHAR},
+      </if>
+      <if test="typeId != null" >
+        #{typeId,jdbcType=VARCHAR},
+      </if>
+      <if test="goodName != null" >
+        #{goodName,jdbcType=VARCHAR},
+      </if>
+      <if test="goodPrice != null" >
+        #{goodPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="goodStatus != null" >
+        #{goodStatus,jdbcType=INTEGER},
+      </if>
+      <if test="goodCount != null" >
+        #{goodCount,jdbcType=INTEGER},
+      </if>
+      <if test="goodCreateDate != null" >
+        #{goodCreateDate,jdbcType=DATE},
+      </if>
+      <if test="goodType != null" >
+        #{goodType,jdbcType=INTEGER},
+      </if>
+      <if test="goodImg != null" >
+        #{goodImg,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mr.zwt.easybuy.entity.GoodEntity" >
+    update t_good
+    <set >
+      <if test="empId != null" >
+        emp_id = #{empId,jdbcType=VARCHAR},
+      </if>
+      <if test="typeId != null" >
+        type_id = #{typeId,jdbcType=VARCHAR},
+      </if>
+      <if test="goodName != null" >
+        good_name = #{goodName,jdbcType=VARCHAR},
+      </if>
+      <if test="goodPrice != null" >
+        good_price = #{goodPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="goodStatus != null" >
+        good_status = #{goodStatus,jdbcType=INTEGER},
+      </if>
+      <if test="goodCount != null" >
+        good_count = #{goodCount,jdbcType=INTEGER},
+      </if>
+      <if test="goodCreateDate != null" >
+        good_create_date = #{goodCreateDate,jdbcType=DATE},
+      </if>
+      <if test="goodType != null" >
+        good_type = #{goodType,jdbcType=INTEGER},
+      </if>
+      <if test="goodImg != null" >
+        good_img = #{goodImg,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where good_id = #{goodId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mr.zwt.easybuy.entity.GoodEntity" >
+    update t_good
+    set emp_id = #{empId,jdbcType=VARCHAR},
+      type_id = #{typeId,jdbcType=VARCHAR},
+      good_name = #{goodName,jdbcType=VARCHAR},
+      good_price = #{goodPrice,jdbcType=DOUBLE},
+      good_status = #{goodStatus,jdbcType=INTEGER},
+      good_count = #{goodCount,jdbcType=INTEGER},
+      good_create_date = #{goodCreateDate,jdbcType=DATE},
+      good_type = #{goodType,jdbcType=INTEGER},
+      good_img = #{goodImg,jdbcType=VARCHAR}
+    where good_id = #{goodId,jdbcType=VARCHAR}
+  </update>
+</mapper>

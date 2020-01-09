@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mr.zwt.easybuy.mapper.GatheringEntityMapper" >
+  <resultMap id="BaseResultMap" type="com.mr.zwt.easybuy.entity.GatheringEntity" >
+    <id column="ga_id" property="gaId" jdbcType="VARCHAR" />
+    <result column="ord_id" property="ordId" jdbcType="VARCHAR" />
+    <result column="ga_price" property="gaPrice" jdbcType="DOUBLE" />
+    <result column="ga_date" property="gaDate" jdbcType="DATE" />
+    <result column="ga_status" property="gaStatus" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ga_id, ord_id, ga_price, ga_date, ga_status
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_gathering
+    where ga_id = #{gaId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from t_gathering
+    where ga_id = #{gaId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.mr.zwt.easybuy.entity.GatheringEntity" >
+    insert into t_gathering (ga_id, ord_id, ga_price, 
+      ga_date, ga_status)
+    values (#{gaId,jdbcType=VARCHAR}, #{ordId,jdbcType=VARCHAR}, #{gaPrice,jdbcType=DOUBLE}, 
+      #{gaDate,jdbcType=DATE}, #{gaStatus,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.mr.zwt.easybuy.entity.GatheringEntity" >
+    insert into t_gathering
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="gaId != null" >
+        ga_id,
+      </if>
+      <if test="ordId != null" >
+        ord_id,
+      </if>
+      <if test="gaPrice != null" >
+        ga_price,
+      </if>
+      <if test="gaDate != null" >
+        ga_date,
+      </if>
+      <if test="gaStatus != null" >
+        ga_status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="gaId != null" >
+        #{gaId,jdbcType=VARCHAR},
+      </if>
+      <if test="ordId != null" >
+        #{ordId,jdbcType=VARCHAR},
+      </if>
+      <if test="gaPrice != null" >
+        #{gaPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="gaDate != null" >
+        #{gaDate,jdbcType=DATE},
+      </if>
+      <if test="gaStatus != null" >
+        #{gaStatus,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mr.zwt.easybuy.entity.GatheringEntity" >
+    update t_gathering
+    <set >
+      <if test="ordId != null" >
+        ord_id = #{ordId,jdbcType=VARCHAR},
+      </if>
+      <if test="gaPrice != null" >
+        ga_price = #{gaPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="gaDate != null" >
+        ga_date = #{gaDate,jdbcType=DATE},
+      </if>
+      <if test="gaStatus != null" >
+        ga_status = #{gaStatus,jdbcType=INTEGER},
+      </if>
+    </set>
+    where ga_id = #{gaId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mr.zwt.easybuy.entity.GatheringEntity" >
+    update t_gathering
+    set ord_id = #{ordId,jdbcType=VARCHAR},
+      ga_price = #{gaPrice,jdbcType=DOUBLE},
+      ga_date = #{gaDate,jdbcType=DATE},
+      ga_status = #{gaStatus,jdbcType=INTEGER}
+    where ga_id = #{gaId,jdbcType=VARCHAR}
+  </update>
+</mapper>

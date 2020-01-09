@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mr.zwt.easybuy.mapper.OrderEntityMapper" >
+  <resultMap id="BaseResultMap" type="com.mr.zwt.easybuy.entity.OrderEntity" >
+    <id column="ord_id" property="ordId" jdbcType="VARCHAR" />
+    <result column="user_id" property="userId" jdbcType="VARCHAR" />
+    <result column="ord_code" property="ordCode" jdbcType="VARCHAR" />
+    <result column="ord_name" property="ordName" jdbcType="VARCHAR" />
+    <result column="ord_create_date" property="ordCreateDate" jdbcType="DATE" />
+    <result column="ord_past_date" property="ordPastDate" jdbcType="DATE" />
+    <result column="ord_money" property="ordMoney" jdbcType="DOUBLE" />
+    <result column="ord_status" property="ordStatus" jdbcType="INTEGER" />
+    <result column="ord_add" property="ordAdd" jdbcType="VARCHAR" />
+    <result column="ord_express_com" property="ordExpressCom" jdbcType="INTEGER" />
+    <result column="ord_exp_code" property="ordExpCode" jdbcType="VARCHAR" />
+    <result column="ord_pay_type" property="ordPayType" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ord_id, user_id, ord_code, ord_name, ord_create_date, ord_past_date, ord_money, ord_status, 
+    ord_add, ord_express_com, ord_exp_code, ord_pay_type
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_order
+    where ord_id = #{ordId,jdbcType=VARCHAR}
+  </select>
+  <select id="list" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    from t_order
+    where 1=1
+    <if test="ordId != null and ordId != ''">
+      and ord_id = #{ordId}
+    </if>
+    <if test="userId != null and userId !=''">
+      and user_id = #{userId}
+    </if>
+    order by ord_status
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from t_order
+    where ord_id = #{ordId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.mr.zwt.easybuy.entity.OrderEntity" >
+    insert into t_order (ord_id, user_id, ord_code, 
+      ord_name, ord_create_date, ord_past_date, 
+      ord_money, ord_status, ord_add, 
+      ord_express_com, ord_exp_code, ord_pay_type
+      )
+    values (#{ordId,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, #{ordCode,jdbcType=VARCHAR}, 
+      #{ordName,jdbcType=VARCHAR}, #{ordCreateDate,jdbcType=DATE}, #{ordPastDate,jdbcType=DATE}, 
+      #{ordMoney,jdbcType=DOUBLE}, #{ordStatus,jdbcType=INTEGER}, #{ordAdd,jdbcType=VARCHAR}, 
+      #{ordExpressCom,jdbcType=INTEGER}, #{ordExpCode,jdbcType=VARCHAR}, #{ordPayType,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.mr.zwt.easybuy.entity.OrderEntity" >
+    insert into t_order
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="ordId != null" >
+        ord_id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="ordCode != null" >
+        ord_code,
+      </if>
+      <if test="ordName != null" >
+        ord_name,
+      </if>
+      <if test="ordCreateDate != null" >
+        ord_create_date,
+      </if>
+      <if test="ordPastDate != null" >
+        ord_past_date,
+      </if>
+      <if test="ordMoney != null" >
+        ord_money,
+      </if>
+      <if test="ordStatus != null" >
+        ord_status,
+      </if>
+      <if test="ordAdd != null" >
+        ord_add,
+      </if>
+      <if test="ordExpressCom != null" >
+        ord_express_com,
+      </if>
+      <if test="ordExpCode != null" >
+        ord_exp_code,
+      </if>
+      <if test="ordPayType != null" >
+        ord_pay_type,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="ordId != null" >
+        #{ordId,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="ordCode != null" >
+        #{ordCode,jdbcType=VARCHAR},
+      </if>
+      <if test="ordName != null" >
+        #{ordName,jdbcType=VARCHAR},
+      </if>
+      <if test="ordCreateDate != null" >
+        #{ordCreateDate,jdbcType=DATE},
+      </if>
+      <if test="ordPastDate != null" >
+        #{ordPastDate,jdbcType=DATE},
+      </if>
+      <if test="ordMoney != null" >
+        #{ordMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="ordStatus != null" >
+        #{ordStatus,jdbcType=INTEGER},
+      </if>
+      <if test="ordAdd != null" >
+        #{ordAdd,jdbcType=VARCHAR},
+      </if>
+      <if test="ordExpressCom != null" >
+        #{ordExpressCom,jdbcType=INTEGER},
+      </if>
+      <if test="ordExpCode != null" >
+        #{ordExpCode,jdbcType=VARCHAR},
+      </if>
+      <if test="ordPayType != null" >
+        #{ordPayType,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mr.zwt.easybuy.entity.OrderEntity" >
+    update t_order
+    <set >
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="ordCode != null" >
+        ord_code = #{ordCode,jdbcType=VARCHAR},
+      </if>
+      <if test="ordName != null" >
+        ord_name = #{ordName,jdbcType=VARCHAR},
+      </if>
+      <if test="ordCreateDate != null" >
+        ord_create_date = #{ordCreateDate,jdbcType=DATE},
+      </if>
+      <if test="ordPastDate != null" >
+        ord_past_date = #{ordPastDate,jdbcType=DATE},
+      </if>
+      <if test="ordMoney != null" >
+        ord_money = #{ordMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="ordStatus != null" >
+        ord_status = #{ordStatus,jdbcType=INTEGER},
+      </if>
+      <if test="ordAdd != null" >
+        ord_add = #{ordAdd,jdbcType=VARCHAR},
+      </if>
+      <if test="ordExpressCom != null" >
+        ord_express_com = #{ordExpressCom,jdbcType=INTEGER},
+      </if>
+      <if test="ordExpCode != null" >
+        ord_exp_code = #{ordExpCode,jdbcType=VARCHAR},
+      </if>
+      <if test="ordPayType != null" >
+        ord_pay_type = #{ordPayType,jdbcType=INTEGER},
+      </if>
+    </set>
+    where ord_id = #{ordId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mr.zwt.easybuy.entity.OrderEntity" >
+    update t_order
+    set user_id = #{userId,jdbcType=VARCHAR},
+      ord_code = #{ordCode,jdbcType=VARCHAR},
+      ord_name = #{ordName,jdbcType=VARCHAR},
+      ord_create_date = #{ordCreateDate,jdbcType=DATE},
+      ord_past_date = #{ordPastDate,jdbcType=DATE},
+      ord_money = #{ordMoney,jdbcType=DOUBLE},
+      ord_status = #{ordStatus,jdbcType=INTEGER},
+      ord_add = #{ordAdd,jdbcType=VARCHAR},
+      ord_express_com = #{ordExpressCom,jdbcType=INTEGER},
+      ord_exp_code = #{ordExpCode,jdbcType=VARCHAR},
+      ord_pay_type = #{ordPayType,jdbcType=INTEGER}
+    where ord_id = #{ordId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByOrdCode" parameterType="java.lang.String" >
+    update t_order
+    set ord_status = 2
+    where ord_code = #{out_trade_no}
+  </update>
+</mapper>

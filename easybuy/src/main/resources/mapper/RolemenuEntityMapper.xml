@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mr.zwt.easybuy.mapper.RolemenuEntityMapper" >
+  <resultMap id="BaseResultMap" type="com.mr.zwt.easybuy.entity.RolemenuEntity" >
+    <id column="rm_id" property="rmId" jdbcType="VARCHAR" />
+    <result column="role_id" property="roleId" jdbcType="VARCHAR" />
+    <result column="me_id" property="meId" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    rm_id, role_id, me_id
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_role_menu
+    where rm_id = #{rmId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from t_role_menu
+    where rm_id = #{rmId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.mr.zwt.easybuy.entity.RolemenuEntity" >
+    insert into t_role_menu (rm_id, role_id, me_id
+      )
+    values (#{rmId,jdbcType=VARCHAR}, #{roleId,jdbcType=VARCHAR}, #{meId,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.mr.zwt.easybuy.entity.RolemenuEntity" >
+    insert into t_role_menu
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="rmId != null" >
+        rm_id,
+      </if>
+      <if test="roleId != null" >
+        role_id,
+      </if>
+      <if test="meId != null" >
+        me_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="rmId != null" >
+        #{rmId,jdbcType=VARCHAR},
+      </if>
+      <if test="roleId != null" >
+        #{roleId,jdbcType=VARCHAR},
+      </if>
+      <if test="meId != null" >
+        #{meId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mr.zwt.easybuy.entity.RolemenuEntity" >
+    update t_role_menu
+    <set >
+      <if test="roleId != null" >
+        role_id = #{roleId,jdbcType=VARCHAR},
+      </if>
+      <if test="meId != null" >
+        me_id = #{meId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where rm_id = #{rmId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mr.zwt.easybuy.entity.RolemenuEntity" >
+    update t_role_menu
+    set role_id = #{roleId,jdbcType=VARCHAR},
+      me_id = #{meId,jdbcType=VARCHAR}
+    where rm_id = #{rmId,jdbcType=VARCHAR}
+  </update>
+</mapper>

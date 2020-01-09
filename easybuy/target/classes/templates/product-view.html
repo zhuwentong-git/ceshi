@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>易买网 - 首页</title>
+<link type="text/css" rel="stylesheet" href="css/style.css" />
+<script type="text/javascript" src="scripts/function.js"></script>
+</head>
+<body>
+
+	<div id="product" class="main">
+		<input type="hidden" name="good_id" th:value="${good.goodId}">
+		<h1><span th:text="${good.goodName}"></span></h1>
+		<div class="infos">
+			<div class="thumb"><img th:src="${good.goodImg}" /></div>
+			<div class="buy">
+				<p>商城价：<span class="price" th:text="${good.goodPrice}">￥</span></p>
+				<p>库　存：<span th:text="${good.goodCount}"></span></p>
+				<p>购买数量:<input type="text" class="good_count" value="1"></p>
+				<div class="button"><input type="button" name="button" value="" /><a href="javascript:void(0)">放入购物车</a></div>
+			</div>
+			<div class="clear"></div>
+		</div>
+		<div class="introduce">
+			<h2><strong>商品详情</strong></h2>
+			<div class="text">
+				特价<br />
+			</div>
+		</div>
+	</div>
+	<script src="/scripts/jquery-1.11.3.min.js"></script>
+	<script src="/scripts/jquery.cookie.js"></script>
+	<script src="/scripts/mr-public.js"></script>
+	<script src="/scripts/easybuyjs/good-detail.js"></script>
+</body>
+</html>

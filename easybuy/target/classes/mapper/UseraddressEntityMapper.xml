@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mr.zwt.easybuy.mapper.UseraddressEntityMapper" >
+  <resultMap id="BaseResultMap" type="com.mr.zwt.easybuy.entity.UseraddressEntity" >
+    <id column="add_id" property="addId" jdbcType="VARCHAR" />
+    <result column="user_id" property="userId" jdbcType="VARCHAR" />
+    <result column="add_pro" property="addPro" jdbcType="VARCHAR" />
+    <result column="add_city" property="addCity" jdbcType="VARCHAR" />
+    <result column="add_county" property="addCounty" jdbcType="VARCHAR" />
+    <result column="add_country" property="addCountry" jdbcType="VARCHAR" />
+    <result column="add_detail" property="addDetail" jdbcType="VARCHAR" />
+    <result column="add_user" property="addUser" jdbcType="VARCHAR" />
+    <result column="add_phone" property="addPhone" jdbcType="VARCHAR" />
+    <result column="add_date" property="addDate" jdbcType="DATE" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    add_id, user_id, add_pro, add_city, add_county, add_country, add_detail, add_user, 
+    add_phone, add_date
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_user_address
+    where add_id = #{addId,jdbcType=VARCHAR}
+  </select>
+  <select id="list" resultMap="BaseResultMap" parameterType="com.mr.zwt.easybuy.entity.UseraddressEntity" >
+    select
+    <include refid="Base_Column_List" />
+    from t_user_address
+    where 1=1
+    <if test="userId != null and userId != ''">
+      and user_id=#{userId}
+    </if>
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from t_user_address
+    where add_id = #{addId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.mr.zwt.easybuy.entity.UseraddressEntity" >
+    insert into t_user_address (add_id, user_id, add_pro, 
+      add_city, add_county, add_country, 
+      add_detail, add_user, add_phone, 
+      add_date)
+    values (#{addId,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, #{addPro,jdbcType=VARCHAR}, 
+      #{addCity,jdbcType=VARCHAR}, #{addCounty,jdbcType=VARCHAR}, #{addCountry,jdbcType=VARCHAR}, 
+      #{addDetail,jdbcType=VARCHAR}, #{addUser,jdbcType=VARCHAR}, #{addPhone,jdbcType=VARCHAR}, 
+      #{addDate,jdbcType=DATE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.mr.zwt.easybuy.entity.UseraddressEntity" >
+    insert into t_user_address
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="addId != null" >
+        add_id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="addPro != null" >
+        add_pro,
+      </if>
+      <if test="addCity != null" >
+        add_city,
+      </if>
+      <if test="addCounty != null" >
+        add_county,
+      </if>
+      <if test="addCountry != null" >
+        add_country,
+      </if>
+      <if test="addDetail != null" >
+        add_detail,
+      </if>
+      <if test="addUser != null" >
+        add_user,
+      </if>
+      <if test="addPhone != null" >
+        add_phone,
+      </if>
+      <if test="addDate != null" >
+        add_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="addId != null" >
+        #{addId,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="addPro != null" >
+        #{addPro,jdbcType=VARCHAR},
+      </if>
+      <if test="addCity != null" >
+        #{addCity,jdbcType=VARCHAR},
+      </if>
+      <if test="addCounty != null" >
+        #{addCounty,jdbcType=VARCHAR},
+      </if>
+      <if test="addCountry != null" >
+        #{addCountry,jdbcType=VARCHAR},
+      </if>
+      <if test="addDetail != null" >
+        #{addDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="addUser != null" >
+        #{addUser,jdbcType=VARCHAR},
+      </if>
+      <if test="addPhone != null" >
+        #{addPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="addDate != null" >
+        #{addDate,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mr.zwt.easybuy.entity.UseraddressEntity" >
+    update t_user_address
+    <set >
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="addPro != null" >
+        add_pro = #{addPro,jdbcType=VARCHAR},
+      </if>
+      <if test="addCity != null" >
+        add_city = #{addCity,jdbcType=VARCHAR},
+      </if>
+      <if test="addCounty != null" >
+        add_county = #{addCounty,jdbcType=VARCHAR},
+      </if>
+      <if test="addCountry != null" >
+        add_country = #{addCountry,jdbcType=VARCHAR},
+      </if>
+      <if test="addDetail != null" >
+        add_detail = #{addDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="addUser != null" >
+        add_user = #{addUser,jdbcType=VARCHAR},
+      </if>
+      <if test="addPhone != null" >
+        add_phone = #{addPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="addDate != null" >
+        add_date = #{addDate,jdbcType=DATE},
+      </if>
+    </set>
+    where add_id = #{addId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mr.zwt.easybuy.entity.UseraddressEntity" >
+    update t_user_address
+    set user_id = #{userId,jdbcType=VARCHAR},
+      add_pro = #{addPro,jdbcType=VARCHAR},
+      add_city = #{addCity,jdbcType=VARCHAR},
+      add_county = #{addCounty,jdbcType=VARCHAR},
+      add_country = #{addCountry,jdbcType=VARCHAR},
+      add_detail = #{addDetail,jdbcType=VARCHAR},
+      add_user = #{addUser,jdbcType=VARCHAR},
+      add_phone = #{addPhone,jdbcType=VARCHAR},
+      add_date = #{addDate,jdbcType=DATE}
+    where add_id = #{addId,jdbcType=VARCHAR}
+  </update>
+</mapper>

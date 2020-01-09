@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="ff08f678-d41d-473b-b6c9-9651312bc00a" name="Default Changelist" comment="" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeInsightWorkspaceSettings">
+    <option name="optimizeImportsOnTheFly" value="true" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="JavaScript File" />
+        <option value="Class" />
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="JsFlowSettings">
+    <service-enabled>true</service-enabled>
+    <exe-path />
+    <other-services-enabled>true</other-services-enabled>
+    <auto-save>true</auto-save>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="localRepository" value="E:\total\repository" />
+        <option name="mavenHome" value="$PROJECT_DIR$/../../maven/apache-maven-3.6.2" />
+        <option name="userSettingsFile" value="E:\total\maven\apache-maven-3.6.2\conf\settings.xml" />
+      </MavenGeneralSettings>
+    </option>
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="downloadDocsAutomatically" value="true" />
+        <option name="downloadSourcesAutomatically" value="true" />
+        <option name="importAutomatically" value="true" />
+        <option name="vmOptionsForImporter" value="-Xmx768m" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="1VC2jzhmz3X0uWovvMKFEa8R8Qp" />
+  <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../6mouse/day17/xiangm" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="restartRequiresConfirmation" value="false" />
+    <property name="settings.editor.selected.configurable" value="MavenSettings" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\total\test\easybuy\src\main\java\com\mr\zwt\common\redis" />
+      <recent name="E:\total\test\easybuy\src\main\resources\templates" />
+      <recent name="E:\total\test\easybuy\src\main\java\com\mr\zwt\common\utils" />
+      <recent name="E:\total\test\easybuy\src\main\resources\static\scripts" />
+      <recent name="E:\total\test\easybuy\src\main\resources\static\images\product" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Spring Boot.EasyBuyStart">
+    <configuration name="mail" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.mr.zwt.common.controller.mail" />
+      <module name="easybuy" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.mr.zwt.common.controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="EasyBuyStart" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="easybuy" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.mr.zwt.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.mr.zwt.EasyBuyStart" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Spring Boot.EasyBuyStart" />
+        <item itemvalue="Application.mail" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="ff08f678-d41d-473b-b6c9-9651312bc00a" name="Default Changelist" comment="" />
+      <created>1576742895225</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1576742895225</updated>
+      <workItem from="1576742915405" duration="8722000" />
+      <workItem from="1576812059945" duration="23479000" />
+      <workItem from="1576887345431" duration="11611000" />
+      <workItem from="1576919176489" duration="937000" />
+      <workItem from="1577059651027" duration="7082000" />
+      <workItem from="1577081571807" duration="97000" />
+      <workItem from="1577081770973" duration="222000" />
+      <workItem from="1577082271694" duration="89000" />
+      <workItem from="1577155578070" duration="21416000" />
+      <workItem from="1577241969733" duration="11978000" />
+      <workItem from="1577264410123" duration="13224000" />
+      <workItem from="1577318628445" duration="27905000" />
+      <workItem from="1577405144410" duration="22764000" />
+      <workItem from="1577494893491" duration="10640000" />
+      <workItem from="1577674968425" duration="21417000" />
+      <workItem from="1577755191005" duration="12963000" />
+      <workItem from="1577925929214" duration="18508000" />
+      <workItem from="1578017849932" duration="19148000" />
+      <workItem from="1578099137589" duration="2000" />
+      <workItem from="1578105981476" duration="138000" />
+      <workItem from="1578106153654" duration="900000" />
+      <workItem from="1578107423985" duration="6206000" />
+      <workItem from="1578269952349" duration="1291000" />
+      <workItem from="1578274515177" duration="717000" />
+      <workItem from="1578275281793" duration="11993000" />
+      <workItem from="1578318971691" duration="396000" />
+      <workItem from="1578375201716" duration="3219000" />
+      <workItem from="1578397248902" duration="3607000" />
+      <workItem from="1578447251584" duration="3980000" />
+      <workItem from="1578463082921" duration="1645000" />
+      <workItem from="1578466828246" duration="1612000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/easybuy$EasyBuyStart.ic" NAME="EasyBuyStart Coverage Results" MODIFIED="1576821536686" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.mr.zwt.*</FILTER>
+    </SUITE>
+  </component>
+</project>

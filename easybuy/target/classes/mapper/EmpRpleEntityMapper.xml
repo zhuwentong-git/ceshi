@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mr.zwt.easybuy.mapper.EmpRpleEntityMapper" >
+  <resultMap id="BaseResultMap" type="com.mr.zwt.easybuy.entity.EmpRpleEntity" >
+    <id column="er_id" property="erId" jdbcType="VARCHAR" />
+    <result column="role_id" property="roleId" jdbcType="VARCHAR" />
+    <result column="emp_id" property="empId" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    er_id, role_id, emp_id
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_emp_role
+    where er_id = #{erId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from t_emp_role
+    where er_id = #{erId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.mr.zwt.easybuy.entity.EmpRpleEntity" >
+    insert into t_emp_role (er_id, role_id, emp_id
+      )
+    values (#{erId,jdbcType=VARCHAR}, #{roleId,jdbcType=VARCHAR}, #{empId,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.mr.zwt.easybuy.entity.EmpRpleEntity" >
+    insert into t_emp_role
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="erId != null" >
+        er_id,
+      </if>
+      <if test="roleId != null" >
+        role_id,
+      </if>
+      <if test="empId != null" >
+        emp_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="erId != null" >
+        #{erId,jdbcType=VARCHAR},
+      </if>
+      <if test="roleId != null" >
+        #{roleId,jdbcType=VARCHAR},
+      </if>
+      <if test="empId != null" >
+        #{empId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mr.zwt.easybuy.entity.EmpRpleEntity" >
+    update t_emp_role
+    <set >
+      <if test="roleId != null" >
+        role_id = #{roleId,jdbcType=VARCHAR},
+      </if>
+      <if test="empId != null" >
+        emp_id = #{empId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where er_id = #{erId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mr.zwt.easybuy.entity.EmpRpleEntity" >
+    update t_emp_role
+    set role_id = #{roleId,jdbcType=VARCHAR},
+      emp_id = #{empId,jdbcType=VARCHAR}
+    where er_id = #{erId,jdbcType=VARCHAR}
+  </update>
+</mapper>

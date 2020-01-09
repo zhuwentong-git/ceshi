@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mr.zwt.easybuy.mapper.MenuEntityMapper" >
+  <resultMap id="BaseResultMap" type="com.mr.zwt.easybuy.entity.MenuEntity" >
+    <id column="me_id" property="meId" jdbcType="VARCHAR" />
+    <result column="me_name" property="meName" jdbcType="VARCHAR" />
+    <result column="me_url" property="meUrl" jdbcType="VARCHAR" />
+    <result column="me_pid" property="mePid" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    me_id, me_name, me_url, me_pid
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_menu
+    where me_id = #{meId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from t_menu
+    where me_id = #{meId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.mr.zwt.easybuy.entity.MenuEntity" >
+    insert into t_menu (me_id, me_name, me_url, 
+      me_pid)
+    values (#{meId,jdbcType=VARCHAR}, #{meName,jdbcType=VARCHAR}, #{meUrl,jdbcType=VARCHAR}, 
+      #{mePid,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.mr.zwt.easybuy.entity.MenuEntity" >
+    insert into t_menu
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="meId != null" >
+        me_id,
+      </if>
+      <if test="meName != null" >
+        me_name,
+      </if>
+      <if test="meUrl != null" >
+        me_url,
+      </if>
+      <if test="mePid != null" >
+        me_pid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="meId != null" >
+        #{meId,jdbcType=VARCHAR},
+      </if>
+      <if test="meName != null" >
+        #{meName,jdbcType=VARCHAR},
+      </if>
+      <if test="meUrl != null" >
+        #{meUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="mePid != null" >
+        #{mePid,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mr.zwt.easybuy.entity.MenuEntity" >
+    update t_menu
+    <set >
+      <if test="meName != null" >
+        me_name = #{meName,jdbcType=VARCHAR},
+      </if>
+      <if test="meUrl != null" >
+        me_url = #{meUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="mePid != null" >
+        me_pid = #{mePid,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where me_id = #{meId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mr.zwt.easybuy.entity.MenuEntity" >
+    update t_menu
+    set me_name = #{meName,jdbcType=VARCHAR},
+      me_url = #{meUrl,jdbcType=VARCHAR},
+      me_pid = #{mePid,jdbcType=VARCHAR}
+    where me_id = #{meId,jdbcType=VARCHAR}
+  </update>
+</mapper>

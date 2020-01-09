@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mr.zwt.easybuy.mapper.InventoryEntityMapper" >
+  <resultMap id="BaseResultMap" type="com.mr.zwt.easybuy.entity.InventoryEntity" >
+    <id column="io_id" property="ioId" jdbcType="VARCHAR" />
+    <result column="emp_id" property="empId" jdbcType="VARCHAR" />
+    <result column="io_type" property="ioType" jdbcType="INTEGER" />
+    <result column="io_count" property="ioCount" jdbcType="INTEGER" />
+    <result column="io_date" property="ioDate" jdbcType="DATE" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    io_id, emp_id, io_type, io_count, io_date
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_inventory
+    where io_id = #{ioId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from t_inventory
+    where io_id = #{ioId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.mr.zwt.easybuy.entity.InventoryEntity" >
+    insert into t_inventory (io_id, emp_id, io_type, 
+      io_count, io_date)
+    values (#{ioId,jdbcType=VARCHAR}, #{empId,jdbcType=VARCHAR}, #{ioType,jdbcType=INTEGER}, 
+      #{ioCount,jdbcType=INTEGER}, #{ioDate,jdbcType=DATE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.mr.zwt.easybuy.entity.InventoryEntity" >
+    insert into t_inventory
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="ioId != null" >
+        io_id,
+      </if>
+      <if test="empId != null" >
+        emp_id,
+      </if>
+      <if test="ioType != null" >
+        io_type,
+      </if>
+      <if test="ioCount != null" >
+        io_count,
+      </if>
+      <if test="ioDate != null" >
+        io_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="ioId != null" >
+        #{ioId,jdbcType=VARCHAR},
+      </if>
+      <if test="empId != null" >
+        #{empId,jdbcType=VARCHAR},
+      </if>
+      <if test="ioType != null" >
+        #{ioType,jdbcType=INTEGER},
+      </if>
+      <if test="ioCount != null" >
+        #{ioCount,jdbcType=INTEGER},
+      </if>
+      <if test="ioDate != null" >
+        #{ioDate,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mr.zwt.easybuy.entity.InventoryEntity" >
+    update t_inventory
+    <set >
+      <if test="empId != null" >
+        emp_id = #{empId,jdbcType=VARCHAR},
+      </if>
+      <if test="ioType != null" >
+        io_type = #{ioType,jdbcType=INTEGER},
+      </if>
+      <if test="ioCount != null" >
+        io_count = #{ioCount,jdbcType=INTEGER},
+      </if>
+      <if test="ioDate != null" >
+        io_date = #{ioDate,jdbcType=DATE},
+      </if>
+    </set>
+    where io_id = #{ioId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mr.zwt.easybuy.entity.InventoryEntity" >
+    update t_inventory
+    set emp_id = #{empId,jdbcType=VARCHAR},
+      io_type = #{ioType,jdbcType=INTEGER},
+      io_count = #{ioCount,jdbcType=INTEGER},
+      io_date = #{ioDate,jdbcType=DATE}
+    where io_id = #{ioId,jdbcType=VARCHAR}
+  </update>
+</mapper>

@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mr.zwt.easybuy.mapper.UserEntityMapper" >
+  <resultMap id="BaseResultMap" type="com.mr.zwt.easybuy.entity.UserEntity" >
+    <id column="user_id" property="userId" jdbcType="VARCHAR" />
+    <result column="user_pass" property="userPass" jdbcType="VARCHAR" />
+    <result column="user_nick" property="userNick" jdbcType="VARCHAR" />
+    <result column="user_phone_code" property="userPhoneCode" jdbcType="VARCHAR" />
+    <result column="user_status" property="userStatus" jdbcType="INTEGER" />
+    <result column="user_creat_date" property="userCreatDate" jdbcType="DATE" />
+    <result column="user_inte" property="userInte" jdbcType="INTEGER" />
+    <result column="user_user_inte" property="userUserInte" jdbcType="INTEGER" />
+    <result column="user_grade" property="userGrade" jdbcType="INTEGER" />
+    <result column="user_img" property="userImg" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    user_id, user_pass, user_nick, user_phone_code, user_status, user_creat_date, user_inte, 
+    user_user_inte, user_grade, user_img
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_user
+    where user_id = #{userId,jdbcType=VARCHAR}
+  </select>
+  <select id="list" resultMap="BaseResultMap" parameterType="com.mr.zwt.easybuy.entity.UserEntity" >
+    select
+    <include refid="Base_Column_List" />
+    from t_user
+    where 1=1
+    <if test="userPhoneCode!=null and userPhoneCode !=''">
+      and user_phone_code = #{userPhoneCode}
+    </if>
+  </select>
+
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from t_user
+    where user_id = #{userId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.mr.zwt.easybuy.entity.UserEntity" >
+    insert into t_user (user_id, user_pass, user_nick, 
+      user_phone_code, user_status, user_creat_date, 
+      user_inte, user_user_inte, user_grade, 
+      user_img)
+    values (#{userId,jdbcType=VARCHAR}, #{userPass,jdbcType=VARCHAR}, #{userNick,jdbcType=VARCHAR}, 
+      #{userPhoneCode,jdbcType=VARCHAR}, #{userStatus,jdbcType=INTEGER}, #{userCreatDate,jdbcType=DATE}, 
+      #{userInte,jdbcType=INTEGER}, #{userUserInte,jdbcType=INTEGER}, #{userGrade,jdbcType=INTEGER}, 
+      #{userImg,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.mr.zwt.easybuy.entity.UserEntity" >
+    insert into t_user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="userPass != null" >
+        user_pass,
+      </if>
+      <if test="userNick != null" >
+        user_nick,
+      </if>
+      <if test="userPhoneCode != null" >
+        user_phone_code,
+      </if>
+      <if test="userStatus != null" >
+        user_status,
+      </if>
+      <if test="userCreatDate != null" >
+        user_creat_date,
+      </if>
+      <if test="userInte != null" >
+        user_inte,
+      </if>
+      <if test="userUserInte != null" >
+        user_user_inte,
+      </if>
+      <if test="userGrade != null" >
+        user_grade,
+      </if>
+      <if test="userImg != null" >
+        user_img,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="userId != null" >
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="userPass != null" >
+        #{userPass,jdbcType=VARCHAR},
+      </if>
+      <if test="userNick != null" >
+        #{userNick,jdbcType=VARCHAR},
+      </if>
+      <if test="userPhoneCode != null" >
+        #{userPhoneCode,jdbcType=VARCHAR},
+      </if>
+      <if test="userStatus != null" >
+        #{userStatus,jdbcType=INTEGER},
+      </if>
+      <if test="userCreatDate != null" >
+        #{userCreatDate,jdbcType=DATE},
+      </if>
+      <if test="userInte != null" >
+        #{userInte,jdbcType=INTEGER},
+      </if>
+      <if test="userUserInte != null" >
+        #{userUserInte,jdbcType=INTEGER},
+      </if>
+      <if test="userGrade != null" >
+        #{userGrade,jdbcType=INTEGER},
+      </if>
+      <if test="userImg != null" >
+        #{userImg,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mr.zwt.easybuy.entity.UserEntity" >
+    update t_user
+    <set >
+      <if test="userPass != null" >
+        user_pass = #{userPass,jdbcType=VARCHAR},
+      </if>
+      <if test="userNick != null" >
+        user_nick = #{userNick,jdbcType=VARCHAR},
+      </if>
+      <if test="userPhoneCode != null" >
+        user_phone_code = #{userPhoneCode,jdbcType=VARCHAR},
+      </if>
+      <if test="userStatus != null" >
+        user_status = #{userStatus,jdbcType=INTEGER},
+      </if>
+      <if test="userCreatDate != null" >
+        user_creat_date = #{userCreatDate,jdbcType=DATE},
+      </if>
+      <if test="userInte != null" >
+        user_inte = #{userInte,jdbcType=INTEGER},
+      </if>
+      <if test="userUserInte != null" >
+        user_user_inte = #{userUserInte,jdbcType=INTEGER},
+      </if>
+      <if test="userGrade != null" >
+        user_grade = #{userGrade,jdbcType=INTEGER},
+      </if>
+      <if test="userImg != null" >
+        user_img = #{userImg,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where user_id = #{userId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mr.zwt.easybuy.entity.UserEntity" >
+    update t_user
+    set user_pass = #{userPass,jdbcType=VARCHAR},
+      user_nick = #{userNick,jdbcType=VARCHAR},
+      user_phone_code = #{userPhoneCode,jdbcType=VARCHAR},
+      user_status = #{userStatus,jdbcType=INTEGER},
+      user_creat_date = #{userCreatDate,jdbcType=DATE},
+      user_inte = #{userInte,jdbcType=INTEGER},
+      user_user_inte = #{userUserInte,jdbcType=INTEGER},
+      user_grade = #{userGrade,jdbcType=INTEGER},
+      user_img = #{userImg,jdbcType=VARCHAR}
+    where user_id = #{userId,jdbcType=VARCHAR}
+  </update>
+</mapper>

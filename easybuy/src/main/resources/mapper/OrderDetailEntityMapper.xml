@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mr.zwt.easybuy.mapper.OrderDetailEntityMapper" >
+  <resultMap id="BaseResultMap" type="com.mr.zwt.easybuy.entity.OrderDetailEntity" >
+    <id column="de_id" property="deId" jdbcType="VARCHAR" />
+    <result column="ord_id" property="ordId" jdbcType="VARCHAR" />
+    <result column="user_id" property="userId" jdbcType="VARCHAR" />
+    <result column="good_id" property="goodId" jdbcType="VARCHAR" />
+    <result column="good_name" property="goodName" jdbcType="VARCHAR" />
+    <result column="good_price" property="goodPrice" jdbcType="DOUBLE" />
+    <result column="buy_count" property="buyCount" jdbcType="INTEGER" />
+    <result column="buy_date" property="buyDate" jdbcType="DATE" />
+    <result column="buy_inte" property="buyInte" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    de_id, ord_id, user_id, good_id, good_name, good_price, buy_count, buy_date, buy_inte
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_order_detail
+    where de_id = #{deId,jdbcType=VARCHAR}
+  </select>
+  <select id="listDetail" resultMap="BaseResultMap" parameterType="com.mr.zwt.easybuy.entity.OrderDetailEntity" >
+    select
+    <include refid="Base_Column_List" />
+    from t_order_detail
+    where 1=1
+    <if test="ordId != null and ordId != ''">
+
+     and ord_id = #{ordId}
+    </if>
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from t_order_detail
+    where de_id = #{deId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.mr.zwt.easybuy.entity.OrderDetailEntity" >
+    insert into t_order_detail (de_id, ord_id, user_id, 
+      good_id, good_name, good_price, 
+      buy_count, buy_date, buy_inte
+      )
+    values (#{deId,jdbcType=VARCHAR}, #{ordId,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, 
+      #{goodId,jdbcType=VARCHAR}, #{goodName,jdbcType=VARCHAR}, #{goodPrice,jdbcType=DOUBLE}, 
+      #{buyCount,jdbcType=INTEGER}, #{buyDate,jdbcType=DATE}, #{buyInte,jdbcType=INTEGER}
+      )
+  </insert>
+
+  <insert id="batchAdd" parameterType="java.util.List" >
+    insert into t_order_detail (de_id, ord_id, user_id,
+    good_id, good_name, good_price,
+    buy_count, buy_date
+    )
+    values
+    <foreach collection="list" item="detail" separator="," index="index">
+      (#{detail.deId,jdbcType=VARCHAR}, #{detail.ordId,jdbcType=VARCHAR}, #{detail.userId,jdbcType=VARCHAR},
+      #{detail.goodId,jdbcType=VARCHAR}, #{detail.goodName,jdbcType=VARCHAR}, #{detail.goodPrice,jdbcType=DOUBLE},
+      #{detail.buyCount,jdbcType=INTEGER}, #{detail.buyDate,jdbcType=DATE}
+      )
+    </foreach>
+
+  </insert>
+
+
+  <insert id="insertSelective" parameterType="com.mr.zwt.easybuy.entity.OrderDetailEntity" >
+    insert into t_order_detail
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="deId != null" >
+        de_id,
+      </if>
+      <if test="ordId != null" >
+        ord_id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="goodId != null" >
+        good_id,
+      </if>
+      <if test="goodName != null" >
+        good_name,
+      </if>
+      <if test="goodPrice != null" >
+        good_price,
+      </if>
+      <if test="buyCount != null" >
+        buy_count,
+      </if>
+      <if test="buyDate != null" >
+        buy_date,
+      </if>
+      <if test="buyInte != null" >
+        buy_inte,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="deId != null" >
+        #{deId,jdbcType=VARCHAR},
+      </if>
+      <if test="ordId != null" >
+        #{ordId,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="goodId != null" >
+        #{goodId,jdbcType=VARCHAR},
+      </if>
+      <if test="goodName != null" >
+        #{goodName,jdbcType=VARCHAR},
+      </if>
+      <if test="goodPrice != null" >
+        #{goodPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="buyCount != null" >
+        #{buyCount,jdbcType=INTEGER},
+      </if>
+      <if test="buyDate != null" >
+        #{buyDate,jdbcType=DATE},
+      </if>
+      <if test="buyInte != null" >
+        #{buyInte,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mr.zwt.easybuy.entity.OrderDetailEntity" >
+    update t_order_detail
+    <set >
+      <if test="ordId != null" >
+        ord_id = #{ordId,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="goodId != null" >
+        good_id = #{goodId,jdbcType=VARCHAR},
+      </if>
+      <if test="goodName != null" >
+        good_name = #{goodName,jdbcType=VARCHAR},
+      </if>
+      <if test="goodPrice != null" >
+        good_price = #{goodPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="buyCount != null" >
+        buy_count = #{buyCount,jdbcType=INTEGER},
+      </if>
+      <if test="buyDate != null" >
+        buy_date = #{buyDate,jdbcType=DATE},
+      </if>
+      <if test="buyInte != null" >
+        buy_inte = #{buyInte,jdbcType=INTEGER},
+      </if>
+    </set>
+    where de_id = #{deId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mr.zwt.easybuy.entity.OrderDetailEntity" >
+    update t_order_detail
+    set ord_id = #{ordId,jdbcType=VARCHAR},
+      user_id = #{userId,jdbcType=VARCHAR},
+      good_id = #{goodId,jdbcType=VARCHAR},
+      good_name = #{goodName,jdbcType=VARCHAR},
+      good_price = #{goodPrice,jdbcType=DOUBLE},
+      buy_count = #{buyCount,jdbcType=INTEGER},
+      buy_date = #{buyDate,jdbcType=DATE},
+      buy_inte = #{buyInte,jdbcType=INTEGER}
+    where de_id = #{deId,jdbcType=VARCHAR}
+  </update>
+</mapper>
