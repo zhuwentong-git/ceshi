@@ -29,7 +29,7 @@
         <jackson.asl.version>1.9.13</jackson.asl.version>
         <bouncycastle.version>1.46</bouncycastle.version>
         <!--fastjson版本-->
-        <fastjson.version>1.2.62</fastjson.version>
+        <fastjson.version>1.2.83</fastjson.version>
         <!--支付宝SDK版本-->
         <alipay.version>4.9.5.ALL</alipay.version>
         <!--easypoi版本-->
